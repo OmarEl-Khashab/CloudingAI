@@ -15,6 +15,8 @@ for extracting information for internal PDF with Llama index to Parse complex do
 - **Self-Hosted Vector Store:** HuggingFaceBgeEmbeddings local embeddings models such as "all-MiniLM-L6-v2"
  or "all-mpnet-base-v2" for CPU usage stored on FAISS database locally.
 
+- **PDF with 100k+ words and complex tables and graphs:** 2024-conocophillips-proxy-statement.pdf
+
 - **Frontend:** A simple HTML/CSS interface that allows for an interactive user experience.
 
 ## Table of Contents
