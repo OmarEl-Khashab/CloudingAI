@@ -46,8 +46,8 @@ for extracting information for internal PDF with Llama index to Parse complex do
 1. **Clone the Repository:**
 
 	```sh
-	git clone https://github.com/OmarEl-Khashab/CloudingAI.git
-	cd Local_RAG
+	git clone https://github.com/elcaiseri/Survey-Analysis-RAG-System.git
+	cd SurveyAnalysisRAG
 	```
 
 2. **Install the required packages** 
@@ -99,7 +99,7 @@ The backend exposes a POST endpoint for querying datasets.
 
 ```json
 {
-  "query": "Define how important is sustainability to consumers?"
+  "query": "Who are the 12 director nominees that the board recommends?"
 }
 ```
 
@@ -107,7 +107,7 @@ The backend exposes a POST endpoint for querying datasets.
 
 ```json
 {
-  "answer": "Sustainability is highly important to consumers, with many prioritizing brands' sustainability credentials in purchasing decisions, influencing around 60-70% of shoppers."
+  "answer": "The 12 director nominees recommended by the board are Dennis V. Arriola, Ryan M. Lance, Timothy A. Leach, William H. McRaven, Robert A. Niblock, David T. Seaton, R.A. Walker, Arjun N. Murti, James J. Mulva, John W. Watson, Kenneth Frazier, and Mark S. Little."
 }
 ```
 
@@ -120,8 +120,12 @@ The backend exposes a POST endpoint for querying datasets.
 
 
 <p align="center">
-  <img src="/SAT.png" alt="My Image" width="700"/>
+  <img src="/RAG.png" alt="My Image" width="700"/>
 </p>
+
+## Limitations
+
+One of the challenges is providing this solution on my own local cpu which was not the best way to handle some embeddings or local large models.
 
 ## Acknowledgement
 

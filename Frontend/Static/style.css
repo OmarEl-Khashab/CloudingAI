@@ -1,0 +1,132 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffffff, #e2f9ff);
+    color: #010c1c;
+}
+
+/* Container Styles */
+.container {
+    width: 100%;
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #010c1c;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    color: #00ffff;
+}
+
+.logo {
+    height: 70px;
+    margin-right: 20px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Welcome Message */
+.welcome-message {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #e6fafa;
+    color: #010c1c;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+/* Main Content */
+main {
+    padding: 30px 20px;
+}
+
+.query-section,
+.result-section {
+    background-color: #ffffff;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1100px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #010c1c;
+}
+
+/* Form Controls */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #c0c0c0;
+    border-radius: 6px;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+/* Button */
+.submit-btn {
+    background-color: #010c1c;
+    color: #00ffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #022140;
+}
+
+/* Response Box */
+.result-box {
+    background-color: #f4fafa;
+    padding: 15px;
+    border: 1px solid #cde8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    min-height: 60px;
+}
+
+/* Footer */
+.contact-support {
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 0.9rem;
+    color: #333;
+    background-color: #010c1c;
+    color: #00ffff;
+}
+
+.contact-support a {
+    color: #00ffff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-support a:hover {
+    text-decoration: underline;
+}

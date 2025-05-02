@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clouding AI Local RAG</title>
+
+    <!-- Fonts and Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header">
+                <img src="{{ url_for('static', path='images/cloudingai_logo.png') }}" alt="Logo" class="logo">
+                <h1>CloudingAI Local RAG Tool</h1>
+            </div>
+        </header>
+
+        <!-- Welcome Message -->
+        <div class="welcome-message">
+            <p>Welcome to CloudingAI RAG tool - Your GenAI Chat Tool</p>
+        </div>
+
+        <!-- Chat Section -->
+        <main>
+            <section class="query-section">
+                <div class="content-box">
+                    <h2>Ask Your Question</h2>
+                    <form id="query-form">
+                        <div class="form-group">
+                            <label for="query">Enter Your Question</label>
+                            <textarea id="query" name="query" rows="4" placeholder="Write your question here..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Generate Results</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="result-section">
+                <div class="content-box">
+                    <h2>Response</h2>
+                    <div id="result" class="result-box"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <div class="contact-support">
+        <p>Powered by AI</p>
+        <p>For More Information? <a href="https://clouding.ai" target="_blank">Visit the Website</a></p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('query-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const query = document.getElementById('query').value;
+
+            fetch('/query', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query: query }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '<p>' + data.answer + '</p>';
+            })
+            .catch(error => {
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '<p style="color:#000000;">Error: ' + error.message + '</p>';
+            });
+        });
+    </script>
+</body>
+</html>
