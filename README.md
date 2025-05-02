@@ -46,8 +46,8 @@ for extracting information for internal PDF with Llama index to Parse complex do
 1. **Clone the Repository:**
 
 	```sh
-	git clone https://github.com/elcaiseri/Survey-Analysis-RAG-System.git
-	cd SurveyAnalysisRAG
+	git clone https://github.com/OmarEl-Khashab/CloudingAI.git
+	cd Local_RAG
 	```
 
 2. **Install the required packages** 
@@ -93,7 +93,7 @@ The backend exposes a POST endpoint for querying datasets.
 
 - **Endpoint:** `/query`
 - **Method:** POST
-- **Description:** Processes a user query and returns AI-generated insights.
+- **Description:** Processes a user query and returns AI-generated Results.
 
 **Request Body:**
 
