@@ -5,7 +5,10 @@ import uvicorn
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-
+import os
+import getpass
+import nest_asyncio
+from dotenv import load_dotenv
 
 # Initialize FastAPI application
 app = FastAPI(
@@ -21,7 +24,6 @@ app.add_middleware(
     allow_headers=["*"],
     allow_credentials=True,
 )
-
 
 # Initialize templates and static files
 templates = Jinja2Templates(directory="Frontend/Template")
@@ -43,4 +45,17 @@ async def health():
 app.include_router(router)
 
 if __name__ == "__main__":
+    # If API KEYS not saved in your env_ you will be asked to add them in the prompt
+    def _set_env(var: str):
+        if not os.environ.get(var):
+            os.environ[var] = getpass.getpass(f"{var}: ")
+
+    nest_asyncio.apply()
+    load_dotenv()
+
+    # Set API keys
+    _set_env('LLAMA_CLOUD_API_KEY')
+    _set_env('GROQ_API_KEY')
+    _set_env('HUGGINGFACEHUB_API_TOKEN')
+
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

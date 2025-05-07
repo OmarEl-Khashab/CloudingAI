@@ -3,8 +3,7 @@ from typing import Annotated
 from typing_extensions import TypedDict
 from langgraph.graph import StateGraph, END, START
 from langchain_core.messages import HumanMessage, AnyMessage
-from RAG.utils import Utils
-from langchain_community.embeddings import HuggingFaceBgeEmbeddings
+
 
 class State(TypedDict):
     question: str

@@ -2,19 +2,17 @@
 
 ##  Description
 CloudingAI Local RAG Tool is a tool using Retrieval-Augmented Generation (RAG).
-It is a web application that utilizes Local LLMs models using Ollama for On-Premises POC
+It is a web application that utilizes Open Source LLMs models using Groq API for On-Premises POC
 to process and analyze user queries for internal data for CloudingAI
 The tool provides valuable insights to CloudingAI clients by 
 leveraging the capabilities of RAG and LangGraph.
 
 The project comprises the following components::
 
-- **Backend:** The question-and-answer chat feature is developed using the Ollama with "mistral:latest" model and LangGraph to implement Retrieval-Augmented Generation (RAG) 
+- **Backend:** The question-and-answer chat feature is developed using Open Source with 'llama-3.1-8b-instant' model and LangGraph to implement Retrieval-Augmented Generation (RAG) 
 for extracting information for internal PDF with Llama index to Parse complex documents, The backend connection is facilitated by a FastAPI-based service that processes user queries and interactions.
 
-- **Self-Hosted Vector Store:** HuggingFaceBgeEmbeddings local embeddings models such as "all-MiniLM-L6-v2"
- or "all-mpnet-base-v2" for CPU usage stored on FAISS database locally.
-
+- **Self-Hosted Vector Store:** HuggingFace Embeddings models such as "BAAI/bge-small-en-v1.5"  using HuggingFaceInferenceAPIEmbeddings
 - **PDF with 100k+ words and complex tables and graphs:** 2024-conocophillips-proxy-statement.pdf
 
 - **Frontend:** A simple HTML/CSS interface that allows for an interactive user experience.
@@ -30,8 +28,8 @@ for extracting information for internal PDF with Llama index to Parse complex do
 
 ## Tool Used
 
-- **LLM-Generated Results:** Utilizes Ollama’s Local LLM models through retrieval-augmented generation (RAG) using LangGraph for accurate answers based on documents data given.
-- **Self-Hosted Vector Store:** HuggingFaceBgeEmbeddings local embeddings models
+- **LLM-Generated Results:** Utilizes Groq’s OpenSource LLM models API through retrieval-augmented generation (RAG) using LangGraph for accurate answers based on documents data given.
+- **Self-Hosted Vector Store:** HuggingFaceInferenceAPIEmbeddings for embeddings models API.
 - **Simple UI:** User-friendly question-answer interface designed for seamless interaction, enhancing user experience and engagement.
 
 ## Prerequisites
@@ -41,6 +39,9 @@ for extracting information for internal PDF with Llama index to Parse complex do
 - **LlamaIndex:** Library for building LLM applications with Advanced Parsing Options.
 - **FAISS DB:** Database for storing Embeddings Index
 - **FastAPI:** Framework for building APIs.
+- **Groq:** OpenSource Platform for LLM models APIs.
+- **Hugging Face:** OpenSource Platform for LLM models and Embeddings.
+- **API keys Generation:**   Official Websites for 'LLAMA_CLOUD_API_KEY', 'GROQ_API_KEY', 'HUGGINGFACEHUB_API_TOKEN' 
 - **Conda Virtual Environment (optional):** To manage dependencies for running python packages.
 
 ## Installation and Setup
@@ -57,10 +58,10 @@ for extracting information for internal PDF with Llama index to Parse complex do
 	```sh
 	pip install -r requirements.txt
 	```
-
+ 
 3. **Create Embedding Index :**
 
-	Add your dataset path and path of the embeddings store:
+	Add your dataset path and save path of the embeddings store in the code:
 	```sh
 	python dataload.py
 	```
@@ -72,7 +73,7 @@ for extracting information for internal PDF with Llama index to Parse complex do
 	```sh
 	python main.py
 	```
-
+ 	Add your generated tokens and start the RAG experience 
 
 ## How to use:
 
@@ -124,10 +125,6 @@ The backend exposes a POST endpoint for querying datasets.
 <p align="center">
   <img src="/RAG.png" alt="My Image" width="700"/>
 </p>
-
-## Limitations
-
-One of the challenges is providing this solution on my own local cpu which was not the best way to handle some embeddings or local large models.
 
 ## Acknowledgement
 

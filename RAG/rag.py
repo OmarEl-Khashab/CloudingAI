@@ -1,26 +1,28 @@
 from RAG.utils import Utils
 from RAG.graph import RAGProcessor
-from langchain_community.embeddings import HuggingFaceBgeEmbeddings
+from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
+import os
 
 
 class RAGPipeline:
-    def __init__(self, embeddings_model="sentence-transformers/all-MiniLM-L6-v2",
+    def __init__(self, embeddings_model="BAAI/bge-small-en-v1.5",
                  ):
         self.embeddings_model = embeddings_model
 
     def setup_generator(self):
-        embedding_model = HuggingFaceBgeEmbeddings(
-            model_name=self.embeddings_model,
-            model_kwargs={
-                'device': 'cpu'
-            },
+
+        key = os.environ["HUGGINGFACEHUB_API_TOKEN"]
+        embeddings = HuggingFaceInferenceAPIEmbeddings(
+            api_key=key,
+            model_name="BAAI/bge-small-en-v1.5",
+            api_url="https://api-inference.huggingface.co/models/BAAI/bge-small-en-v1.5"
         )
 
-        utils = Utils(embed_model=embedding_model)
+        utils = Utils(embed_model=embeddings)
         retriever, llm = utils.utils_load()
         template_rag = """You are an assistant for question-answering tasks. 
 
-                Use the below pieces of retrieved context to answer the question:
+                Use the below retrieved context to answer USER question:
 
                 {context} 
 
@@ -30,9 +32,9 @@ class RAGPipeline:
 
                 {question}
 
-                Provide an answer to this questions using only the above context or say it's beyond my knowledge. 
+                Provide an answer to this questions using only the above context or say it's beyond my knowledge.
 
-                Use 7 lines maximum and keep the answer concise.
+                Use 10 lines maximum and keep the answer concise.
 
                 Answer:"""
 
@@ -54,4 +56,3 @@ class RAGPipeline:
         except Exception as e:
             print(f"Error during pipeline run: {e}")
             return "Sorry, I couldn't process your request."
-
